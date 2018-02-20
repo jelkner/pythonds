@@ -23,7 +23,7 @@ if master_url is None:
         master_url = 'http://127.0.0.1:8000'
         doctrees = './build/{}/doctrees'.format(project_name)
 
-master_app = 'runestone'
+master_app = 'data_structures_and_algorithms_with_python_remixed'
 serving_dir = './build/pythonds'
 dest = '../../static'
 
@@ -43,9 +43,8 @@ options(
             'appname':master_app,
             'loglevel':10,
             'course_url':master_url,
-            'use_services': 'true',
+            'use_services': 'false',
             'python3': 'true',
-            'dburl': 'postgresql://bmiller@localhost/runestone',
             'basecourse': 'pythonds',
         }
     )
