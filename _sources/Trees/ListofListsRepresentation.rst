@@ -1,20 +1,22 @@
 ..  Copyright (C)  Brad Miller, David Ranum
-    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+    This work is licensed under the Creative Commons
+    Attribution-NonCommercial-ShareAlike 4.0 International License. To view a
+    copy of this license, visit
+    http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
 List of Lists Representation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In a tree represented by a list of lists, we will begin
-with Python’s list data structure and write the functions defined above.
-Although writing the interface as a set of operations on a list is a bit
-different from the other abstract data types we have implemented, it is
-interesting to do so because it provides us with a simple recursive data
-structure that we can look at and examine directly. In a list of lists
-tree, we will store the value of the root node as the first element of
-the list. The second element of the list will itself be a list that
-represents the left subtree. The third element of the list will be
-another list that represents the right subtree. To illustrate this
+In a tree represented by a list of lists, we will begin with Python’s list data
+structure and write the functions defined above.  Although writing the
+interface as a set of operations on a list is a bit different from the other
+abstract data types we have implemented, it is interesting to do so because it
+provides us with a simple recursive data structure that we can look at and
+examine directly. In a list of lists tree, we will store the value of the root
+node as the first element of the list. The second element of the list will
+itself be a list that represents the left subtree. The third element of the
+list will be another list that represents the right subtree. To illustrate this
 storage technique, let’s look at an example. :ref:`Figure 1 <fig_smalltree>`
 shows a simple tree and the corresponding list implementation.
 
@@ -27,61 +29,59 @@ shows a simple tree and the corresponding list implementation.
 
 ::
 
-        myTree = ['a',   #root
-              ['b',  #left subtree
+        my_tree = ['a',   # root
+              ['b',  # left subtree
                ['d', [], []],
                ['e', [], []] ],
-              ['c',  #right subtree
+              ['c',  # right subtree
                ['f', [], []],
                [] ]  
              ]           
                   
 
 
-
-Notice that we can access subtrees of the list using standard list
-indexing. The root of the tree is ``myTree[0]``, the left subtree of the
-root is ``myTree[1]``, and the right subtree is ``myTree[2]``. :ref:`ActiveCode 1 <lst_treelist1>` illustrates creating a simple tree using a
-list. Once the tree is constructed, we can access the root and the left
-and right subtrees. One very nice property of this list of lists
-approach is that the structure of a list representing a subtree adheres
-to the structure defined for a tree; the structure itself is recursive!
-A subtree that has a root value and two empty lists is a leaf node.
-Another nice feature of the list of lists approach is that it
-generalizes to a tree that has many subtrees. In the case where the tree
-is more than a binary tree, another subtree is just another list.
+Notice that we can access subtrees of the list using standard list indexing.
+The root of the tree is ``myTree[0]``, the left subtree of the root is
+``myTree[1]``, and the right subtree is ``myTree[2]``. :ref:`ActiveCode 1
+<lst_treelist1>` illustrates creating a simple tree using a list. Once the tree
+is constructed, we can access the root and the left and right subtrees. One
+very nice property of this list of lists approach is that the structure of a
+list representing a subtree adheres to the structure defined for a tree; the
+structure itself is recursive!  A subtree that has a root value and two empty
+lists is a leaf node.  Another nice feature of the list of lists approach is
+that it generalizes to a tree that has many subtrees. In the case where the
+tree is more than a binary tree, another subtree is just another list.
 
 .. _lst_treelist1:
 
 .. activecode:: tree_list1
     :caption: Using Indexing to Access Subtrees
 
-    myTree = ['a', ['b', ['d',[],[]], ['e',[],[]] ], ['c', ['f',[],[]], []] ]
-    print(myTree)
-    print('left subtree = ', myTree[1])
-    print('root = ', myTree[0])
-    print('right subtree = ', myTree[2])
+    my_tree = ['a', ['b', ['d',[],[]], ['e',[],[]] ], ['c', ['f',[],[]], []] ]
+    print(my_tree)
+    print('left subtree = ', my_tree[1])
+    print('root = ', my_tree[0])
+    print('right subtree = ', my_tree[2])
 
 
-Let’s formalize this definition of the tree data structure by providing
-some functions that make it easy for us to use lists as trees. Note that
-we are not going to define a binary tree class. The functions we will
-write will just help us manipulate a standard list as though we are
-working with a tree.
+Let’s formalize this definition of the tree data structure by providing some
+functions that make it easy for us to use lists as trees. Note that we are not
+going to define a binary tree class. The functions we will write will just help
+us manipulate a standard list as though we are working with a tree.
 
 ::
 
 
-    def BinaryTree(r):
+    def binary_tree(r):
         return [r, [], []]    
 
-The ``BinaryTree`` function simply constructs a list with a root node
-and two empty sublists for the children. To add a left subtree to the
-root of a tree, we need to insert a new list into the second position of
-the root list. We must be careful. If the list already has something in
-the second position, we need to keep track of it and push it down the
-tree as the left child of the list we are adding. :ref:`Listing 1 <lst_linsleft>`
-shows the Python code for inserting a left child.
+The ``binary_tree`` function simply constructs a list with a root node and two
+empty sublists for the children. To add a left subtree to the root of a tree,
+we need to insert a new list into the second position of the root list. We must
+be careful. If the list already has something in the second position, we need
+to keep track of it and push it down the tree as the left child of the list we
+are adding. :ref:`Listing 1 <lst_linsleft>` shows the Python code for inserting
+a left child.
 
 .. _lst_linsleft:
 
@@ -89,19 +89,19 @@ shows the Python code for inserting a left child.
 
 ::
 
-    def insertLeft(root,newBranch):
+    def insert_left(root, new_branch):
         t = root.pop(1)
         if len(t) > 1:
-            root.insert(1,[newBranch,t,[]])
+            root.insert(1, [new_branch, t, []])
         else:
-            root.insert(1,[newBranch, [], []])
+            root.insert(1,[new_branch, [], []])
         return root
 
-Notice that to insert a left child, we first obtain the (possibly empty)
-list that corresponds to the current left child. We then add the new
-left child, installing the old left child as the left child of the new
-one. This allows us to splice a new node into the tree at any position.
-The code for ``insertRight`` is similar to ``insertLeft`` and is shown
+Notice that to insert a left child, we first obtain the (possibly empty) list
+that corresponds to the current left child. We then add the new left child,
+installing the old left child as the left child of the new one. This allows us
+to splice a new node into the tree at any position.  The code for
+``insert_right`` is similar to ``insert_left`` and is shown
 in :ref:`Listing 2 <lst_linsright>`.
 
 .. _lst_linsright:
@@ -110,17 +110,17 @@ in :ref:`Listing 2 <lst_linsright>`.
 
 ::
 
-    def insertRight(root,newBranch):
+    def insert_right(root, new_branch):
         t = root.pop(2)
         if len(t) > 1:
-            root.insert(2,[newBranch,[],t])
+            root.insert(2, [new_branch, [], t])
         else:
-            root.insert(2,[newBranch,[],[]])
+            root.insert(2, [new_branch, [], []])
         return root
 
-To round out this set of tree-making functions(see :ref:`Listing 3 <lst_treeacc>`), let’s write a couple of
-access functions for getting and setting the root value, as well as
-getting the left or right subtrees.
+To round out this set of tree-making functions(see :ref:`Listing 3
+<lst_treeacc>`), let’s write a couple of access functions for getting and
+setting the root value, as well as getting the left or right subtrees.
 
 .. _lst_treeacc:
 
@@ -129,22 +129,21 @@ getting the left or right subtrees.
 ::
 
 
-    def getRootVal(root):
+    def get_root_val(root):
         return root[0]
     
-    def setRootVal(root,newVal):
-        root[0] = newVal
+    def set_root_val(root, new_val):
+        root[0] = new_val
     
-    def getLeftChild(root):
+    def get_left_child(root):
         return root[1]
     
-    def getRightChild(root):
+    def get_right_child(root):
         return root[2]
 
-:ref:`ActiveCode 2 <lst_bintreetry>` exercises the tree
-functions we have just written. You should try it
-out for yourself. One of the exercises asks you to draw the tree
-structure resulting from this set of calls.
+:ref:`ActiveCode 2 <lst_bintreetry>` exercises the tree functions we have just
+written. You should try it out for yourself. One of the exercises asks you to
+draw the tree structure resulting from this set of calls.
 
 .. _lst_bintreetry:
 
@@ -152,50 +151,50 @@ structure resulting from this set of calls.
 .. activecode:: bin_tree
     :caption: A Python Session to Illustrate Basic Tree Functions
 
-    def BinaryTree(r):
+    def binary_tree(r):
         return [r, [], []]    
 
-    def insertLeft(root,newBranch):
+    def insert_left(root, new_branch):
         t = root.pop(1)
         if len(t) > 1:
-            root.insert(1,[newBranch,t,[]])
+            root.insert(1, [new_branch, t, []])
         else:
-            root.insert(1,[newBranch, [], []])
+            root.insert(1, [new_branch, [], []])
         return root
 
-    def insertRight(root,newBranch):
+    def insert_right(root, new_branch):
         t = root.pop(2)
         if len(t) > 1:
-            root.insert(2,[newBranch,[],t])
+            root.insert(2,[new_branch, [], t])
         else:
-            root.insert(2,[newBranch,[],[]])
+            root.insert(2,[new_branch, [], []])
         return root
 
-    def getRootVal(root):
+    def get_root_val(root):
         return root[0]
     
-    def setRootVal(root,newVal):
-        root[0] = newVal
+    def set_root_val(root, new_val):
+        root[0] = new_val
     
-    def getLeftChild(root):
+    def get_left_child(root):
         return root[1]
     
-    def getRightChild(root):
+    def get_right_child(root):
         return root[2]
 
-    r = BinaryTree(3)
-    insertLeft(r,4)
-    insertLeft(r,5)
-    insertRight(r,6)
-    insertRight(r,7)
-    l = getLeftChild(r)
+    r = binary_tree(3)
+    insert_left(r, 4)
+    insert_left(r, 5)
+    insert_right(r, 6)
+    insert_right(r, 7)
+    l = get_left_child(r)
     print(l)
     
-    setRootVal(l,9)
+    set_root_val(l, 9)
     print(r)
-    insertLeft(l,11)
+    insert_left(l, 11)
     print(r)
-    print(getRightChild(getRightChild(r)))
+    print(get_right_child(get_right_child(r)))
     
 
 .. admonition:: Self Check
@@ -216,10 +215,10 @@ structure resulting from this set of calls.
       .. sourcecode:: python
       
           x = BinaryTree('a')
-          insertLeft(x,'b')
-          insertRight(x,'c')
-          insertRight(getRightChild(x),'d')
-          insertLeft(getRightChild(getRightChild(x)),'e')    
+          insert_left(x,'b')
+          insert_right(x,'c')
+          insert_right(get_right_child(x),'d')
+          insert_left(get_right_child(get_right_child(x)),'e')    
 
       Which of the answers is the correct representation of the tree?
 
@@ -235,7 +234,7 @@ structure resulting from this set of calls.
           pass
           
       ttree = buildTree()
-      testEqual(getRootVal(getRightChild(ttree)),'c')
-      testEqual(getRootVal(getRightChild(getLeftChild(ttree))),'d')      
-      testEqual(getRootVal(getRightChild(getRightChild(ttree))),'f')            
+      testEqual(get_root_val(get_right_child(ttree)),'c')
+      testEqual(get_root_val(get_right_child(get_left_child(ttree))),'d')      
+      testEqual(get_root_val(get_right_child(get_right_child(ttree))),'f')            
       
