@@ -45,7 +45,6 @@ options(
             'course_url':master_url,
             'use_services': 'false',
             'python3': 'true',
-            'dburl': 'postgresql://bmiller@localhost/runestone',
             'basecourse': 'pythonds',
         }
     )
