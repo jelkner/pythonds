@@ -1,10 +1,11 @@
-.. Problem Solving with Algorithms and Data Structures documentation master file, created by
-   sphinx-quickstart on Thu Oct 27 08:17:45 2011.
+.. Problem Solving with Algorithms and Data Structures documentation master
+   file, created by sphinx-quickstart on Thu Oct 27 08:17:45 2011.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
 .. meta::
-   :description: An interactive version of Problem Solving with Algorithms and Data Structures using Python.
+   :description: An interactive version of Problem Solving with Algorithms and
+    Data Structures using Python.
    :keywords: python, data structures, computer science
 
 .. toc_version: 2
@@ -13,16 +14,7 @@
 Problem Solving with Algorithms and Data Structures using Python
 ================================================================
 
-.. image:: _static/PythonDScover.jpg
-    :alt: PythonDS Cover
-
-By Brad Miller and David Ranum, Luther College
-
-.. raw:: html
-
-   <ul>
-   <li><a href="/runestone/assignments/chooseAssignment.html">Assignments</a></li>
-   </ul>
+By Brad Miller and David Ranum, Luther College (as remixed by Jeffrey Elkner)
 
 .. toctree::
    :numbered:

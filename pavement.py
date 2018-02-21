@@ -10,9 +10,9 @@ import pkg_resources
 project_name = "pythonds"
 ###############################
 
-# if you want to override the master url do it here.  Otherwise setting it to None
-# configures it for the default case of wanting to use localhost for development
-# and interactivepython for deployment
+# If you want to override the master url do it here.  Otherwise setting it to
+# None configures it for the default case of wanting to use localhost for
+# development and interactivepython for deployment
 
 master_url = None
 if master_url is None:
@@ -52,10 +52,5 @@ options(
 
 version = pkg_resources.require("runestone")[0].version
 options.build.template_args['runestone_version'] = version
-
-# Check to see if we are building on our Jenkins build server, if so use the environment variables
-# to update the DB information for this build
-if 'DBHOST' in environ and  'DBPASS' in environ and 'DBUSER' in environ and 'DBNAME' in environ:
-    options.build.template_args['dburl'] = 'postgresql://{DBUSER}:{DBPASS}@{DBHOST}/{DBNAME}'.format(**environ)
 
 from runestone import build  # build is called implicitly by the paver driver.
