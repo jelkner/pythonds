@@ -92,7 +92,7 @@ A final example of a tree is a web page. The following is an example of a
 simple web page written using HTML. :ref:`Figure 3 <fig_html>` shows the tree
 that corresponds to each of the HTML tags used to create the page.
 
-::
+.. sourcecode:: html
 
     <!DOCTYPE html>
     <html lang="en">
