@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Problem Solving with Algorithms and Data Structures'
-copyright = '2014 Brad Miller, David Ranum'
+copyright = '2018 Brad Miller, David Ranum, Jeffrey Elkner'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
