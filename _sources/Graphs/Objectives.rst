@@ -1,4 +1,4 @@
-..  Copyright (C)  Brad Miller, David Ranum
+..  Copyright (C)  Brad Miller, David Ranum, Jeffrey Elkner
     This work is licensed under the Creative Commons
     Attribution-NonCommercial-ShareAlike 4.0 International License. To view a
     copy of this license, visit

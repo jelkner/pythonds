@@ -1,4 +1,4 @@
-..  Copyright (C)  Brad Miller, David Ranum
+..  Copyright (C)  Brad Miller, David Ranum, Jeffrey Elkner
     This work is licensed under the Creative Commons
     Attribution-NonCommercial-ShareAlike 4.0 International License. To view a
     copy of this license, visit
@@ -16,12 +16,12 @@ represent each vertex in the graph.
 
 Each ``Vertex`` uses a dictionary to keep track of the vertices to which it is
 connected, and the weight of each edge. This dictionary is called
-``connectedTo``. The listing below shows the code for the ``Vertex`` class. The
+``connected_to``. The listing below shows the code for the ``Vertex`` class. The
 constructor simply initializes the ``id``, which will typically be a string,
-and the ``connectedTo`` dictionary. The ``add_neighbor`` method is used add a
+and the ``connected_to`` dictionary. The ``add_neighbor`` method is used add a
 connection from this vertex to another. The ``connections`` method returns
 all of the vertices in the adjacency list, as represented by the
-``connectedTo`` instance variable. The ``weight`` method returns the weight
+``connected_to`` instance variable. The ``weight`` method returns the weight
 of the edge from this vertex to the vertex passed as a parameter.
 
 .. _lst_vertex:
@@ -48,7 +48,7 @@ of the edge from this vertex to the vertex passed as a parameter.
             return self.id
 
         def weight(self,nbr):
-            return self.connectedTo[nbr]
+            return self.connected_to[nbr]
 
 The ``Graph`` class, shown in the next listing, contains a dictionary that maps
 vertex names to vertex objects. In :ref:`Figure 4 <fig_adjlist>` this
