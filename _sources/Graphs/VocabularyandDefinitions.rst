@@ -23,8 +23,8 @@ Edge
     edge connects two vertices to show that there is a relationship between
     them. Edges may be one-way or two-way. If the edges in a graph are all
     one-way, we say that the graph is a **directed graph**, or a **digraph**.
-    The class prerequisites graph shown previous section is clearly a digraph
-    since you must take some classes before others.
+    The class prerequisites graph shown in the previous section is clearly a
+    digraph since you must take some classes before others.
 
 Weight
     Edges may be weighted to show that there is a cost to go from one vertex to
