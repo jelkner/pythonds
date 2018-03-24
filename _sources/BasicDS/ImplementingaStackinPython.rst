@@ -1,33 +1,34 @@
 ..  Copyright (C)  Brad Miller, David Ranum
-    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+    This work is licensed under the Creative Commons
+    Attribution-NonCommercial-ShareAlike 4.0 International License. To view a
+    copy of this license, visit
+    http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
 Implementing a Stack in Python
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have clearly defined the stack as an abstract data type we
-will turn our attention to using Python to implement the stack. Recall
-that when we give an abstract data type a physical implementation we
-refer to the implementation as a data structure.
+Now that we have clearly defined the stack as an abstract data type we will
+turn our attention to using Python to implement the stack. Recall that when we
+give an abstract data type a physical implementation we refer to the
+implementation as a data structure.
 
-As we described in Chapter 1, in Python, as in any object-oriented
-programming language, the implementation of choice for an abstract data
-type such as a stack is the creation of a new class. The stack
-operations are implemented as methods. Further, to implement a stack,
-which is a collection of elements, it makes sense to utilize the power
-and simplicity of the primitive collections provided by Python. We will
-use a list.
+As we described in Chapter 1, in Python, as in any object-oriented programming
+language, the implementation of choice for an abstract data type such as a
+stack is the creation of a new class. The stack operations are implemented as
+methods. Further, to implement a stack, which is a collection of elements, it
+makes sense to utilize the power and simplicity of the primitive collections
+provided by Python. We will use a list.
 
-Recall that the list class in Python provides an ordered collection
-mechanism and a set of methods. For example, if we have the list
-[2,5,3,6,7,4], we need only to decide which end of the list will be
-considered the top of the stack and which will be the base. Once that
-decision is made, the operations can be implemented using the list
-methods such as ``append`` and ``pop``.
+Recall that the list class in Python provides an ordered collection mechanism
+and a set of methods. For example, if we have the list [2,5,3,6,7,4], we need
+only to decide which end of the list will be considered the top of the stack
+and which will be the base. Once that decision is made, the operations can be
+implemented using the list methods such as ``append`` and ``pop``.
 
-The following stack implementation (:ref:`ActiveCode 1 <lst_stackcode1>`) assumes that
-the end of the list will hold the top element of the stack. As the stack
-grows (as ``push`` operations occur), new items will be added on the end
+The following stack implementation (:ref:`ActiveCode 1 <lst_stackcode1>`)
+assumes that the end of the list will hold the top element of the stack. As the
+stack grows (as ``push`` operations occur), new items will be added on the end
 of the list. ``pop`` operations will manipulate that same end.
 
 .. _lst_stackcode1:
@@ -41,7 +42,7 @@ of the list. ``pop`` operations will manipulate that same end.
         def __init__(self):
             self.items = []
 
-        def isEmpty(self):
+        def is_empty(self):
             return self.items == []
 
         def push(self, item):
@@ -58,13 +59,16 @@ of the list. ``pop`` operations will manipulate that same end.
 
 Remember that nothing happens when we click the ``run`` button other than the
 definition of the class.  We must create a ``Stack`` object and then use it.
-:ref:`ActiveCode 2 <lst_stackcode1>` shows the ``Stack`` class in
-action as we perform the sequence of operations from
-:ref:`Table 1 <tbl_stackops>`.  Notice that the definition of the ``Stack`` class is 
-imported from the ``pythonds`` module.
+:ref:`ActiveCode 2 <lst_stackcode1>` shows the ``Stack`` class in action as we
+perform the sequence of operations from :ref:`Table 1 <tbl_stackops>`.  Notice
+that the definition of the ``Stack`` class is imported from the ``pythonds``
+module.
 
 .. note:: 
-    The ``pythonds`` module contains implementations of all data structures discussed in this book.  It is structured according to the sections: basic, trees, and graphs.  The module can be downloaded from `pythonworks.org <http://www.pythonworks.org/pythonds>`_.
+    The ``pythonds`` module contains implementations of all data structures
+    discussed in this book.  It is structured according to the sections: basic,
+    trees, and graphs.  The module can be downloaded from `pythonworks.org
+    <http://www.pythonworks.org/pythonds>`_.
     
 
 .. activecode:: stack_ex_1
@@ -74,13 +78,13 @@ imported from the ``pythonds`` module.
 
    s=Stack()
    
-   print(s.isEmpty())
+   print(s.is_empty())
    s.push(4)
    s.push('dog')
    print(s.peek())
    s.push(True)
    print(s.size())
-   print(s.isEmpty())
+   print(s.is_empty())
    s.push(8.4)
    print(s.pop())
    print(s.pop())
@@ -104,7 +108,7 @@ explicitly using ``pop`` and ``insert``. The implementation is shown in
         def __init__(self):
             self.items = []
 
-        def isEmpty(self):
+        def is_empty(self):
             return self.items == []
 
         def push(self, item):
@@ -168,10 +172,10 @@ benchmark testing.
       :answer_c: an error will occur
       :answer_d: 'z'
       :correct: c
-      :feedback_a: You may want to check out the docs for isEmpty
+      :feedback_a: You may want to check out the docs for is_empty
       :feedback_b: There is an odd number of things on the stack but each time through the loop 2 things are popped.
       :feedback_c: Good Job.
-      :feedback_d: You may want to check out the docs for isEmpty
+      :feedback_d: You may want to check out the docs for is_empty
 
       Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?
 
@@ -181,7 +185,7 @@ benchmark testing.
         m.push('x')
         m.push('y')
         m.push('z')
-        while not m.isEmpty():
+        while not m.is_empty():
            m.pop()
            m.pop()
 
