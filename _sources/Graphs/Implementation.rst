@@ -35,11 +35,12 @@ of the edge from this vertex to the vertex passed as a parameter.
             self.id = key
             self.connected_to = {}
 
-        def add_neighbor(self, nbr, weight=0):
+        def add_neighbor(self, nbr, weight=None):
             self.connected_to[nbr] = weight
 
         def __str__(self):
-            return str(self.id) + ' connected_to: ' + str([x.id for x in self.connected_to])
+            return str(self.id) + ' connected_to: ' + \
+                       str([x.id for x in self.connected_to])
 
         def connections(self):
             return self.connected_to.keys()
@@ -47,7 +48,7 @@ of the edge from this vertex to the vertex passed as a parameter.
         def id(self):
             return self.id
 
-        def weight(self,nbr):
+        def weight(self, nbr):
             return self.connected_to[nbr]
 
 The ``Graph`` class, shown in the next listing, contains a dictionary that maps
@@ -71,22 +72,22 @@ by the objects themselves.
             self.vert_list = {}
             self.num_vertices = 0
             
-        def add_vertex(self,key):
+        def add_vertex(self, key):
             self.num_vertices = self.num_vertices + 1
             new_vertex = Vertex(key)
             self.vert_list[key] = new_vertex
             return new_vertex
         
-        def get_vertex(self,n):
+        def get_vertex(self, n):
             if n in self.vert_list:
                 return self.vert_list[n]
             else:
                 return None
 
-        def __contains__(self,n):
+        def __contains__(self, n):
             return n in self.vert_list
         
-        def add_edge(self,f,t,cost=0):
+        def add_edge(self, f, t, cost=None):
             if f not in self.vert_list:
                 nv = self.add_vertex(f)
             if t not in self.vert_list:
@@ -114,31 +115,31 @@ should check the output of the edge list at the end of this session against
     >>> for i in range(6):
     ...    g.add_vertex(i)
     >>> g.vert_list
-    {0: <adjGraph.Vertex instance at 0x41e18>, 
-     1: <adjGraph.Vertex instance at 0x7f2b0>, 
-     2: <adjGraph.Vertex instance at 0x7f288>, 
-     3: <adjGraph.Vertex instance at 0x7f350>, 
-     4: <adjGraph.Vertex instance at 0x7f328>, 
-     5: <adjGraph.Vertex instance at 0x7f300>}
-    >>> g.add_edge(0,1,5)
-    >>> g.add_edge(0,5,2)
-    >>> g.add_edge(1,2,4)
-    >>> g.add_edge(2,3,9)
-    >>> g.add_edge(3,4,7)
-    >>> g.add_edge(3,5,3)
-    >>> g.add_edge(4,0,1)
-    >>> g.add_edge(5,4,8)
-    >>> g.add_edge(5,2,1)
+    {0: <graphs.Vertex object at 0x7f8e3b60ff98>,
+    1: <graphs.Vertex object at 0x7f8e3b633b70>,
+    2: <graphs.Vertex object at 0x7f8e3b633e80>,
+    3: <graphs.Vertex object at 0x7f8e3b633f60>,
+    4: <graphs.Vertex object at 0x7f8e3b633f98>,
+    5: <graphs.Vertex object at 0x7f8e3b633fd0>}
+    >>> g.add_edge(0, 1, 5)
+    >>> g.add_edge(0, 5, 2)
+    >>> g.add_edge(1, 2, 4)
+    >>> g.add_edge(2, 3, 9)
+    >>> g.add_edge(3, 4, 7)
+    >>> g.add_edge(3, 5, 3)
+    >>> g.add_edge(4, 0, 1)
+    >>> g.add_edge(5, 4, 8)
+    >>> g.add_edge(5, 2, 1)
     >>> for v in g:
     ...    for w in v.connections(): 
-    ...        print("( %s , %s )" % (v.id(), w.id()))
+    ...        print("({}, {})".format(v.id, w.id))
     ... 
-    ( 0 , 5 )
-    ( 0 , 1 )
-    ( 1 , 2 )
-    ( 2 , 3 )
-    ( 3 , 4 )
-    ( 3 , 5 )
-    ( 4 , 0 )
-    ( 5 , 4 )
-    ( 5 , 2 )
+    (0, 5)
+    (0, 1)
+    (1, 2)
+    (2, 3)
+    (3, 4)
+    (3, 5)
+    (4, 0)
+    (5, 4)
+    (5, 2)
