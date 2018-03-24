@@ -15,17 +15,17 @@ The graph abstract data type (ADT) is defined as follows:
 -  ``add_vertex(vert)`` adds an instance of ``Vertex`` to the graph.
 
 -  ``add_edge(from_vert, to_vert)`` Adds a new, directed edge to the graph that
-  connects two vertices.
+   connects two vertices.
 
 -  ``add_edge(from_vert, to_vert, weight)`` Adds a new, weighted, directed edge
-  to the graph that connects two vertices.
+   to the graph that connects two vertices.
 
 -  ``get_vertex(vertkey)`` finds the vertex in the graph named ``vertkey``.
 
 -  ``get_vertices()`` returns the list of all vertices in the graph.
 
 -  ``in`` returns ``True`` for a statement of the form ``vertex in graph``, if
-  the given vertex is in the graph, ``False`` otherwise.
+   the given vertex is in the graph, ``False`` otherwise.
 
 Beginning with the formal definition for a graph there are several ways we can
 implement the graph ADT in Python. We will see that there are trade-offs in
