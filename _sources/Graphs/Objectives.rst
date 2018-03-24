@@ -33,10 +33,9 @@ or easiest path from one place to another.
 
 As a student of computer science you may wonder about the computer science and
 mathematics courses you can take at your college. A graph is good way to
-represent the prerequisites and other interdependencies among courses.
-:ref:`Figure 1 <fig1>` shows such a graph. This one represents most of
-the available CS and math courses at Northern Virginia Community College
-and the order in which they must be taken.
+represent the interdependencies among courses.  :ref:`Figure 1 <fig1>` shows
+such a graph. This one represents most of the available CS and math courses at
+Northern Virginia Community College and the order in which they must be taken.
 
 .. _fig1:
 

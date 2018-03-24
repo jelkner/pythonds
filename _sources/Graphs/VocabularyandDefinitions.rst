@@ -1,43 +1,43 @@
-..  Copyright (C)  Brad Miller, David Ranum
-    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+..  Copyright (C)  Brad Miller, David Ranum, Jeffrey Elkner
+    This work is licensed under the Creative Commons
+    Attribution-NonCommercial-ShareAlike 4.0 International License. To view a
+    copy of this license, visit
+    http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
 Vocabulary and Definitions
 --------------------------
 
-Now that we have looked at some examples of graphs, we will more
-formally define a graph and its components. We already know some of
-these terms from our discussion of trees.
+Now that we have looked at some examples of graphs, we will more formally
+define a graph and its components. We already know some of these terms from our
+discussion of trees.
 
 Vertex
-    A vertex (also called a “node”) is a fundamental part of a graph. It
-    can have a name, which we will call the “key.” A vertex may also
-    have additional information. We will call this additional
-    information the “payload.”
+    A vertex (also called a “node”) is a fundamental part of a graph. It can
+    have a name, which we will call the “key.” A vertex may also have
+    additional information. We will call this additional information the
+    “payload.”
 
 Edge
-    An edge (also called an “arc”) is another fundamental part of a
-    graph. An edge connects two vertices to show that there is a
-    relationship between them. Edges may be one-way or two-way. If the
-    edges in a graph are all one-way, we say that the graph is a
-    **directed graph**, or a **digraph**. The class prerequisites graph
-    shown above is clearly a digraph since you must take some classes
-    before others.
+    An edge (also called an “arc”) is another fundamental part of a graph. An
+    edge connects two vertices to show that there is a relationship between
+    them. Edges may be one-way or two-way. If the edges in a graph are all
+    one-way, we say that the graph is a **directed graph**, or a **digraph**.
+    The class prerequisites graph shown previous section is clearly a digraph
+    since you must take some classes before others.
 
 Weight
-    Edges may be weighted to show that there is a cost to go from one
-    vertex to another. For example in a graph of roads that connect one
-    city to another, the weight on the edge might represent the distance
-    between the two cities.
+    Edges may be weighted to show that there is a cost to go from one vertex to
+    another. For example in a graph of roads that connect one city to another,
+    the weight on the edge might represent the distance between the two cities.
 
-With those definitions in hand we can formally define a graph. A graph
-can be represented by :math:`G` where :math:`G =(V,E)`. For the
-graph :math:`G`, :math:`V` is a set of vertices and :math:`E` is a
-set of edges. Each edge is a tuple :math:`(v,w)` where
-:math:`w,v \in V`. We can add a third component to the edge tuple to
-represent a weight. A subgraph :math:`s` is a set of edges :math:`e`
-and vertices :math:`v` such that :math:`e \subset E` and
-:math:`v \subset V`.
+With those definitions in hand we can formally define a graph. A graph can be
+represented by :math:`G` where :math:`G =(V,E)`. For the graph :math:`G`,
+:math:`V` is a set of vertices and :math:`E` is a set of edges. Each edge is a
+tuple :math:`(v,w)` where :math:`w,v \in V`. We can add a third component to
+the edge tuple to represent a weight. A subgraph :math:`s` is a set of edges
+:math:`e` and vertices :math:`v` such that :math:`e \subset E` and :math:`v
+\subset V`.
 
 :ref:`Figure  2 <fig_dgsimple>` shows another example of a simple weighted
 digraph. Formally we can represent this graph as the set of six
