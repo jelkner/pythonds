@@ -69,7 +69,8 @@ graph.
 ::
 
     from pythonds.graphs import Graph
-    
+
+
     def build_graph(word_file):
         d = {}
         g = Graph()    
