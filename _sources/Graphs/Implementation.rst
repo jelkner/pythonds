@@ -15,14 +15,17 @@ our implementation of the Graph abstract data type we will create two classes
 represent each vertex in the graph.
 
 Each ``Vertex`` uses a dictionary to keep track of the vertices to which it is
-connected, and the weight of each edge. This dictionary is called
-``connected_to``. The listing below shows the code for the ``Vertex`` class. The
-constructor simply initializes the ``id``, which will typically be a string,
-and the ``connected_to`` dictionary. The ``add_neighbor`` method is used add a
+connected, and the weight of each edge. If weights are not needed, a set could
+be used instead of a dictionary. In order to handle both cases, a dictionary
+called ``neighbors`` is used, but it is given a default value of ``None``.
+
+The listing below shows the code for the ``Vertex`` class. The initialization
+method simply initializes the ``key``, which will typically be a string,
+and the ``neighbors`` dictionary. The ``add_neighbor`` method is used add a
 connection from this vertex to another. The ``connections`` method returns
-all of the vertices in the adjacency list, as represented by the
-``connected_to`` instance variable. The ``weight`` method returns the weight
-of the edge from this vertex to the vertex passed as a parameter.
+all of the vertices in the adjacency list, as represented by the ``neighbors``
+instance variable. The ``weight`` method returns the weight of the edge from
+this vertex to the vertex passed as a parameter, or ``None`` if it is not set.
 
 .. _lst_vertex:
 
@@ -32,24 +35,23 @@ of the edge from this vertex to the vertex passed as a parameter.
 
     class Vertex:
         def __init__(self, key):
-            self.id = key
-            self.connected_to = {}
+            self.key = key
+            self.neighbors = {}
 
-        def add_neighbor(self, nbr, weight=None):
-            self.connected_to[nbr] = weight
+        def add_neighbor(self, neighbor, weight=None):
+            self.neighbors[neighbor] = weight
 
         def __str__(self):
-            return str(self.id) + ' connected_to: ' + \
-                       str([x.id for x in self.connected_to])
+            return '{} neighbors: {}'.format(
+                self.key,
+                [x.key for x in self.neighbors]
+            )
 
-        def connections(self):
-            return self.connected_to.keys()
+        def get_connections(self):
+            return self.neighbors.keys()
 
-        def id(self):
-            return self.id
-
-        def weight(self, nbr):
-            return self.connected_to[nbr]
+        def get_weight(self, neighbor):
+            return self.neighbors[neighbor]
 
 The ``Graph`` class, shown in the next listing, contains a dictionary that maps
 vertex names to vertex objects. In :ref:`Figure 4 <fig_adjlist>` this
