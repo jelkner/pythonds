@@ -72,35 +72,35 @@ by the objects themselves.
     class Graph:
         def __init__(self):
             self.vert_list = {}
-            self.num_vertices = 0
-            
-        def add_vertex(self, key):
-            self.num_vertices = self.num_vertices + 1
-            new_vertex = Vertex(key)
-            self.vert_list[key] = new_vertex
-            return new_vertex
-        
-        def get_vertex(self, n):
-            if n in self.vert_list:
-                return self.vert_list[n]
+
+        def add_vertex(self, vertex):
+            self.vertices = [vertex.key] = vertex 
+
+        def get_vertex(self, key):
+            if key in self.verticies[key]:
+                return self.verticies[key]
             else:
                 return None
 
-        def __contains__(self, n):
-            return n in self.vert_list
+        def __contains__(self, key):
+            return key in self.verticies
         
-        def add_edge(self, f, t, cost=None):
-            if f not in self.vert_list:
-                nv = self.add_vertex(f)
-            if t not in self.vert_list:
-                nv = self.add_vertex(t)
-            self.vert_list[f].add_neighbor(self.vert_list[t], cost)
+        def add_edge(self, from_key, to_key, weight=None):
+            if from_key not in self.verticies:
+                self.add_vertex(Vertex(from_key))
+            if to_key not in self.verticies:
+                self.add_vertex(Vertex(to_key))
+            self.verticies[from_key].add_neighbor(
+                self.verticies[to_key],
+                weight
+            )
         
         def get_vertices(self):
-            return self.vert_list.keys()
+            return self.verticies.keys()
             
         def __iter__(self):
-            return iter(self.vert_list.values())
+            return iter(self.verticies.values())
+
 
 Using the ``Graph`` and ``Vertex`` classes just defined, the following Python
 session creates the graph in :ref:`Figure 2 <fig_dgsimple>`. First we create
@@ -115,8 +115,8 @@ should check the output of the edge list at the end of this session against
 
     >>> g = Graph()
     >>> for i in range(6):
-    ...    g.add_vertex(i)
-    >>> g.vert_list
+    ...    g.add_vertex(Vertex(i))
+    >>> g.verticies
     {0: <graphs.Vertex object at 0x7f8e3b60ff98>,
     1: <graphs.Vertex object at 0x7f8e3b633b70>,
     2: <graphs.Vertex object at 0x7f8e3b633e80>,
