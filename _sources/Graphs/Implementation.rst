@@ -74,32 +74,32 @@ by the objects themselves.
             self.vert_list = {}
 
         def add_vertex(self, vertex):
-            self.vertices = [vertex.key] = vertex 
+            self.vertices[vertex.key] = vertex 
 
         def get_vertex(self, key):
-            if key in self.verticies[key]:
-                return self.verticies[key]
+            if key in self.vertices[key]:
+                return self.vertices[key]
             else:
                 return None
 
         def __contains__(self, key):
-            return key in self.verticies
+            return key in self.vertices
         
         def add_edge(self, from_key, to_key, weight=None):
-            if from_key not in self.verticies:
+            if from_key not in self.vertices:
                 self.add_vertex(Vertex(from_key))
-            if to_key not in self.verticies:
+            if to_key not in self.vertices:
                 self.add_vertex(Vertex(to_key))
-            self.verticies[from_key].add_neighbor(
-                self.verticies[to_key],
+            self.vertices[from_key].add_neighbor(
+                self.vertices[to_key],
                 weight
             )
         
         def get_vertices(self):
-            return self.verticies.keys()
+            return self.vertices.keys()
             
         def __iter__(self):
-            return iter(self.verticies.values())
+            return iter(self.vertices.values())
 
 
 Using the ``Graph`` and ``Vertex`` classes just defined, the following Python
@@ -116,7 +116,8 @@ should check the output of the edge list at the end of this session against
     >>> g = Graph()
     >>> for i in range(6):
     ...    g.add_vertex(Vertex(i))
-    >>> g.verticies
+    ...
+    >>> g.vertices
     {0: <graphs.Vertex object at 0x7f8e3b60ff98>,
     1: <graphs.Vertex object at 0x7f8e3b633b70>,
     2: <graphs.Vertex object at 0x7f8e3b633e80>,
@@ -133,15 +134,15 @@ should check the output of the edge list at the end of this session against
     >>> g.add_edge(5, 4, 8)
     >>> g.add_edge(5, 2, 1)
     >>> for v in g:
-    ...    for w in v.connections(): 
-    ...        print("({}, {})".format(v.id, w.id))
+    ...    for w in v.get_connections(): 
+    ...        print("({} -> {})".format(v.key, w.key))
     ... 
-    (0, 5)
-    (0, 1)
-    (1, 2)
-    (2, 3)
-    (3, 4)
-    (3, 5)
-    (4, 0)
-    (5, 4)
-    (5, 2)
+    0 -> 5
+    0 -> 1
+    1 -> 2
+    2 -> 3
+    3 -> 4
+    3 -> 5
+    4 -> 0
+    5 -> 4
+    5 -> 2
