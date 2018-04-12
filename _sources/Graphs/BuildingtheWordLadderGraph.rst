@@ -92,9 +92,11 @@ graph.
                         g.add_edge(word1, word2)
         return g
 
+
 Since this is our first real-world graph problem, you might be wondering how
-sparse is the graph? The list of four-letter words we have for this problem is
-5,110 words long. If we were to use an adjacency matrix, the matrix would have
-5,110 \* 5,110 = 26,112,100 cells. The graph constructed by the ``build_graph``
-function has exactly 53,286 edges, so the matrix would have only 0.20% of the
-cells filled! That is a very sparse matrix indeed.
+sparse is the graph? We will use
+`vocabulary.txt <../_static/resources/vocabulary.txt>`__, a list of 5,110
+four-letter words for this problem. If we were to use an adjacency matrix, the
+matrix would have 5,110 \* 5,110 = 26,112,100 cells. The graph constructed by
+the ``build_graph`` function has exactly 53,286 edges, so the matrix would have
+only 0.20% of the cells filled! That is a very sparse matrix indeed.
