@@ -18,7 +18,7 @@ The graph abstract data type (ADT) is defined as follows:
    connects two vertices.
 
 -  ``add_edge(from_vert, to_vert)`` Adds a new, directed edge to the graph that
-  connects two vertices.
+   connects two vertices.
 
 -  ``get_vertex(vertkey)`` finds the vertex in the graph named ``vertkey``.
 
