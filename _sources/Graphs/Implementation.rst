@@ -71,7 +71,7 @@ by the objects themselves.
 
     class Graph:
         def __init__(self):
-            self.vert_list = {}
+            self.vertices = {}
 
         def add_vertex(self, vertex):
             self.vertices[vertex.key] = vertex 
@@ -83,6 +83,13 @@ by the objects themselves.
                 return None
 
         def __contains__(self, key):
+            """
+            Overload the in operator to support:
+              >>> g = Graph()
+              >>> g.add_vertex(Vertex(42))
+              >>> 42 in g
+              True
+            """
             return key in self.vertices
         
         def add_edge(self, from_key, to_key, weight=None):
